@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Sidebar from "../components/Sidebar";
 import StatsCard from "../components/StatsCard";
@@ -6,22 +6,34 @@ import HabitCard from "../components/HabitCard";
 import AddHabit from "../components/AddHabit";
 
 function Dashboard() {
-  const [habits, setHabits] =
-    useState([
-      {
-        id: 1,
-        name: "Workout",
-        streak: 12,
-        completed: false,
-      },
+  const [habits, setHabits] = useState(() => {
+    const savedHabits =
+      localStorage.getItem("habits");
 
-      {
-        id: 2,
-        name: "Read Book",
-        streak: 20,
-        completed: false,
-      },
-    ]);
+    return savedHabits
+      ? JSON.parse(savedHabits)
+      : [
+          {
+            id: 1,
+            name: "Workout",
+            streak: 12,
+            completed: false,
+          },
+          {
+            id: 2,
+            name: "Read Book",
+            streak: 20,
+            completed: false,
+          },
+        ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "habits",
+      JSON.stringify(habits)
+    );
+  }, [habits]);
 
   const addHabit = (name) => {
     const newHabit = {
