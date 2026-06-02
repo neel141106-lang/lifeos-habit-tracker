@@ -11,14 +11,12 @@ function HabitCard({
     <div className="habit-card">
       <div>
         <h3>{name}</h3>
-
         <p>
           🔥 {streak} day streak
         </p>
       </div>
 
       <div className="habit-actions">
-
         <button
           onClick={() =>
             completeHabit(id)
@@ -46,7 +44,6 @@ function HabitCard({
         >
           🗑️
         </button>
-
       </div>
     </div>
   );

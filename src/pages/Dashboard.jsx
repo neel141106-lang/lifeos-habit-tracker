@@ -7,8 +7,7 @@ import AddHabit from "../components/AddHabit";
 
 function Dashboard() {
   const [habits, setHabits] = useState(() => {
-    const savedHabits =
-      localStorage.getItem("habits");
+    const savedHabits = localStorage.getItem("habits");
 
     return savedHabits
       ? JSON.parse(savedHabits)
@@ -16,14 +15,16 @@ function Dashboard() {
           {
             id: 1,
             name: "Workout",
-            streak: 12,
+            streak: 0,
             completed: false,
+            lastCompleted: null,
           },
           {
             id: 2,
             name: "Read Book",
-            streak: 20,
+            streak: 0,
             completed: false,
+            lastCompleted: null,
           },
         ];
   });
@@ -41,53 +42,67 @@ function Dashboard() {
       name,
       streak: 0,
       completed: false,
+      lastCompleted: null,
     };
 
-    setHabits([
-      ...habits,
-      newHabit,
-    ]);
+    setHabits([...habits, newHabit]);
   };
 
   const completeHabit = (id) => {
+    const today = new Date().toDateString();
+
+    setHabits(
+      habits.map((habit) => {
+        if (habit.id !== id) {
+          return habit;
+        }
+
+        if (
+          habit.lastCompleted === today
+        ) {
+          return {
+            ...habit,
+            completed: !habit.completed,
+          };
+        }
+
+        return {
+          ...habit,
+          completed: true,
+          streak: habit.streak + 1,
+          lastCompleted: today,
+        };
+      })
+    );
+  };
+
+  const deleteHabit = (id) => {
+    setHabits(
+      habits.filter(
+        (habit) => habit.id !== id
+      )
+    );
+  };
+
+  const editHabit = (id) => {
+    const newName = prompt(
+      "Enter new habit name"
+    );
+
+    if (!newName) return;
+
     setHabits(
       habits.map((habit) =>
         habit.id === id
           ? {
               ...habit,
-              completed:
-                !habit.completed,
+              name: newName,
             }
           : habit
       )
     );
   };
 
-  const deleteHabit = (id) => {
-  setHabits(
-    habits.filter(
-      (habit) => habit.id !== id
-    )
-  );
-};
-  const editHabit = (id) => {
-  const newName = prompt(
-    "Enter new habit name"
-  );
-
-  if (!newName) return;
-
-  setHabits(
-    habits.map((habit) =>
-      habit.id === id
-        ? {
-            ...habit,
-            name: newName,
-          }
-        : habit
-    )
-  );
-};
   const completedCount =
     habits.filter(
       (habit) => habit.completed
@@ -107,9 +122,7 @@ function Dashboard() {
       <Sidebar />
 
       <div className="main">
-        <h1>
-          Good Evening 👋
-        </h1>
+        <h1>Good Evening 👋</h1>
 
         <div className="cards">
           <StatsCard
@@ -119,9 +132,7 @@ function Dashboard() {
 
           <StatsCard
             title="⭐ XP"
-            value={
-              completedCount * 10
-            }
+            value={completedCount * 10}
           />
 
           <StatsCard
@@ -143,20 +154,24 @@ function Dashboard() {
         </h2>
 
         <div className="habit-list">
-          {habits.map(
-            (habit) => (
-              <HabitCard
-  key={habit.id}
-  id={habit.id}
-  name={habit.name}
-  streak={habit.streak}
-  completed={habit.completed}
-  completeHabit={completeHabit}
-  deleteHabit={deleteHabit}
-  editHabit={editHabit}
-/>
-            )
-          )}
+          {habits.map((habit) => (
+            <HabitCard
+              key={habit.id}
+              id={habit.id}
+              name={habit.name}
+              streak={habit.streak}
+              completed={
+                habit.completed
+              }
+              completeHabit={
+                completeHabit
+              }
+              deleteHabit={
+                deleteHabit
+              }
+              editHabit={editHabit}
+            />
+          ))}
         </div>
       </div>
     </div>
