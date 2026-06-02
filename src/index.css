@@ -173,3 +173,11 @@ body {
   border-radius:10px;
   cursor:pointer;
 }
+.habit-actions{
+  display:flex;
+  gap:10px;
+}
+
+.delete-btn{
+  background:#ef4444 !important;
+}

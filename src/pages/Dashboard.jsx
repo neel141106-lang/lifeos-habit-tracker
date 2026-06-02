@@ -63,6 +63,13 @@ function Dashboard() {
     );
   };
 
+  const deleteHabit = (id) => {
+  setHabits(
+    habits.filter(
+      (habit) => habit.id !== id
+    )
+  );
+};
   const completedCount =
     habits.filter(
       (habit) => habit.completed
@@ -121,17 +128,14 @@ function Dashboard() {
           {habits.map(
             (habit) => (
               <HabitCard
-                key={habit.id}
-                id={habit.id}
-                name={habit.name}
-                streak={habit.streak}
-                completed={
-                  habit.completed
-                }
-                completeHabit={
-                  completeHabit
-                }
-              />
+  key={habit.id}
+  id={habit.id}
+  name={habit.name}
+  streak={habit.streak}
+  completed={habit.completed}
+  completeHabit={completeHabit}
+  deleteHabit={deleteHabit}
+/>
             )
           )}
         </div>
