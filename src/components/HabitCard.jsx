@@ -5,6 +5,7 @@ function HabitCard({
   completed,
   completeHabit,
   deleteHabit,
+  editHabit,
 }) {
   return (
     <div className="habit-card">
@@ -17,6 +18,7 @@ function HabitCard({
       </div>
 
       <div className="habit-actions">
+
         <button
           onClick={() =>
             completeHabit(id)
@@ -28,6 +30,15 @@ function HabitCard({
         </button>
 
         <button
+          className="edit-btn"
+          onClick={() =>
+            editHabit(id)
+          }
+        >
+          ✏️
+        </button>
+
+        <button
           className="delete-btn"
           onClick={() =>
             deleteHabit(id)
@@ -35,6 +46,7 @@ function HabitCard({
         >
           🗑️
         </button>
+
       </div>
     </div>
   );

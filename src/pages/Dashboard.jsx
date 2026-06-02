@@ -70,6 +70,24 @@ function Dashboard() {
     )
   );
 };
+  const editHabit = (id) => {
+  const newName = prompt(
+    "Enter new habit name"
+  );
+
+  if (!newName) return;
+
+  setHabits(
+    habits.map((habit) =>
+      habit.id === id
+        ? {
+            ...habit,
+            name: newName,
+          }
+        : habit
+    )
+  );
+};
   const completedCount =
     habits.filter(
       (habit) => habit.completed
@@ -135,6 +153,7 @@ function Dashboard() {
   completed={habit.completed}
   completeHabit={completeHabit}
   deleteHabit={deleteHabit}
+  editHabit={editHabit}
 />
             )
           )}
