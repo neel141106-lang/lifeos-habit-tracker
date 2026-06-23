@@ -1,16 +1,187 @@
-# React + Vite
+# LifeOS Habit Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive habit tracking application designed to help users build consistency, maintain positive habits, and monitor progress through streaks, analytics, achievements, and calendar-based tracking.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://lifeos-habit-tracker.vercel.app/
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Habit Management
 
-## Expanding the ESLint configuration
+* Add new habits
+* Edit existing habits
+* Delete habits
+* Organize daily routines
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Progress Tracking
+
+* Mark habits as completed
+* Monitor daily consistency
+* Track habit completion history
+
+### Streak System
+
+* Maintain daily streaks
+* Visual progress indicators
+* Motivation through consistency tracking
+
+### Analytics Dashboard
+
+* View overall progress
+* Analyze completion rates
+* Monitor habit performance
+
+### Calendar View
+
+* View habit activity by date
+* Track historical progress
+* Easy navigation across days
+
+### Achievement System
+
+* Unlock achievements based on consistency
+* Track milestones and progress
+* Encourage long-term habit building
+
+### Dark Mode
+
+* Toggle between light and dark themes
+* Improved user experience across environments
+
+### Responsive Design
+
+* Mobile-friendly interface
+* Optimized for desktop and tablet devices
+
+---
+
+## Screenshots
+
+### Dashboard
+
+![Dashboard](./public/screenshots/Dashboard.png)
+
+### Analytics
+
+![Analytics](./public/screenshots/Analytics.png)
+
+### Calendar
+
+![Calendar](./public/screenshots/Calendar.png)
+
+### Add Habit
+
+![Add Habit](./public/screenshots/Habit_add.png)
+
+### Habit Days
+
+![Habit Days](./public/screenshots/Habit_days.png)
+
+### Achievements
+
+![Achievements](./public/screenshots/Achievements.png)
+
+### Dark Mode
+
+![Dark Mode](./public/screenshots/Darkmode.png)
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* React
+* JavaScript
+* CSS
+
+### Build Tool
+
+* Vite
+
+### Deployment
+
+* Vercel
+
+### Version Control
+
+* Git
+* GitHub
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_REPOSITORY_URL
+```
+
+Navigate to the project folder:
+
+```bash
+cd habit-tracker
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+---
+
+## Project Structure
+
+```text
+habit-tracker
+├── public
+│   └── screenshots
+├── src
+├── package.json
+├── vite.config.js
+├── README.md
+└── index.html
+```
+
+---
+
+## Future Improvements
+
+* User Authentication
+* Cloud Data Synchronization
+* Habit Reminders
+* Email Notifications
+* Social Habit Challenges
+* Advanced Analytics
+* Goal Tracking
+* AI-Based Habit Recommendations
+
+---
+
+## Project Objective
+
+The objective of LifeOS Habit Tracker is to help users develop productive routines, maintain consistency, and achieve personal goals through a simple and engaging habit-tracking experience.
+
+---
+
+## Author
+
+Neel Kalekar
+
+GitHub: https://github.com/neel141106-lang
